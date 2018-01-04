@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: myautoportal
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Emax
+Implementation-Vendor-Id: com.myautoportal
+Build-Jdk: 1.8.0_51
+Implementation-URL: http://projects.spring.io/spring-boot/myautoportal
+ /
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
