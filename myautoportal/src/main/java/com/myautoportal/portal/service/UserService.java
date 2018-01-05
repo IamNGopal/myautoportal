@@ -23,6 +23,7 @@ public class UserService {
 	RoleRepository rolerepository;
 	
 	public ModelAndView validateUser(User user, BindingResult bindingResult){
+		System.out.println("0000");
 		ModelAndView modelAndView = new ModelAndView();
 		User userExists = userrepository.findUserByEmail(user.getEmail());
 		if (userExists != null) {

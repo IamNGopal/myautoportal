@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -44,6 +45,18 @@ public class User {
 	@NotEmpty(message = "*Please provide your name")
 	private String name;
 	
+	@Column(name = "user_address")
+	@NotEmpty(message = "*Please provide your name")
+	private String userAddress;
+	
+	public String getUserRoleId() {
+		return userRoleId;
+	}
+
+	public void setUserRoleId(String userRoleId) {
+		this.userRoleId = userRoleId;
+	}
+
 	@Column(name = "last_name")
 	@NotEmpty(message = "*Please provide your last name")
 	private String lastName;
@@ -56,9 +69,25 @@ public class User {
 //	@NotEmpty(message = "*Please Select User Role")
 	private String userRoleId;
 	
+	@Lob
+	@Column(name = "file")
+	@NotEmpty(message = "*Please provide your last name")
+	private byte[]  file;
+	
+
+	public byte[] getFile() {
+		return file;
+	}
+
+	public void setFile(byte[] file) {
+		this.file = file;
+	}
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
+	
+	
 	
 	 @OneToMany(fetch = FetchType.EAGER, mappedBy="user",cascade = CascadeType.ALL)
 	    private Set<Role> userRole;
@@ -105,6 +134,14 @@ public class User {
 
 	public String getEmail() {
 		return email;
+	}
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
 	}
 
 	public void setEmail(String email) {

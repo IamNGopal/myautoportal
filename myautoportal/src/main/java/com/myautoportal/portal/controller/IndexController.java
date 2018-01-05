@@ -84,9 +84,13 @@ public class IndexController {
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 		 userService.validateUser(user,bindingResult);
 		ModelAndView modelAndView = userService.validateUser(user,bindingResult);
-//		modelAndView.setViewName("portal/userlist");
-//		return modelAndView;
-		return new ModelAndView("redirect:/userlist");
+		if(bindingResult.hasErrors()){
+		modelAndView.setViewName("redirect:/registration");
+		return modelAndView;
+		}
+		else{
+			return new ModelAndView("redirect:/userlist");
+		}
 	}
 	
 	@RequestMapping("/edituser/{id}")
